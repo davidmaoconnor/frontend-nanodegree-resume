@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: resumeBuilder.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: resumeBuilder.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Biographical object
+*@description Describes contact and other useful information about me
+*/
+var bio = {
+  "name": "David O'Connor",
+  "role": "Front-end Web Developer",
+  "contacts": {
+    "mobile": "305-984-8118",
+    "email": "davidmaoconnor@gmail.com",
+    "github": "davidmaoconnor",
+    "twitter": "N/A",
+    "location": "Miami, FL"
+  },
+  "welcomeMessage": "Hello, World!",
+  "skills": ["HTML", "CSS", "Bootstrap", "Photoshop", "Illustrator"],
+  "biopic": "https://avatars3.githubusercontent.com/u/17125492?v=3&amp;s=460",
+
+/** @constructor Function to display the bio on the DOM
+*@description Adds information from the bio object to index.html
+*/
+  display: function displayBio() {
+    var formattedName = HTMLheaderName.replace("%data%", bio.name);
+    var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+    $("#header").prepend(formattedName + formattedRole);
+
+    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+    var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+    var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+
+    $("#topContacts").append(formattedMobile + formattedEmail + formattedGithub + formattedLocation);
+
+    $("#footerContacts").append(formattedMobile + formattedEmail + formattedGithub + formattedLocation);
+
+    var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
+    var formattedMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+    $("#header").append(formattedBioPic);
+    $("#header").append(formattedMsg);
+
+    $("#header").append(HTMLskillsStart);
+    var skillFirst = HTMLskills.replace("%data%", bio.skills[0]);
+    var skillSecond = HTMLskills.replace("%data%", bio.skills[1]);
+    var skillThird = HTMLskills.replace("%data%", bio.skills[2]);
+    var skillFourth = HTMLskills.replace("%data%", bio.skills[3]);
+    var skillFifth = HTMLskills.replace("%data%", bio.skills[4]);
+    $("#header").append(skillFirst + skillSecond + skillThird + skillFourth + skillFifth);
+  }
+}
+
+/** Education Object
+*@description Describes the schools I attended and the online courses
+*/
+var education = {
+  "schools": [
+    {
+      "name": "Miami Dade College",
+      "location": "Miami, FL",
+      "degree": "N/A",
+      "majors": ["Film", "Environmental Science"],
+      "dates": "2008",
+      "url": "http://www.mdc.edu/"
+    },
+    {
+      "name": "Dr. Michael Krop Sr. High",
+      "location": "Miami, FL",
+      "degree": "N/A",
+      "majors": ["Not", "Applicable"],
+      "dates": "2008",
+      "url": "http://kropseniorhigh.org/"
+    }
+  ],
+  "OnlineCourses": [
+    {
+      "title": "Udacity - Front-End Web Developer Nanodegree",
+      "school": "Online",
+      "date": "2016",
+      "url": "https://www.udacity.com"
+    }
+  ],
+
+/** @constructor Function to display my education on the DOM
+*@description Adds information from the education object to index.html
+*/
+  display: function () {
+    $("#education").append(HTMLschoolStart);
+    for (school in education.schools) {
+      var formattedschoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+      var formattedschoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+
+      var formattedEductaionSection = formattedschoolName + formattedschoolLocation;
+
+      $(".education-entry:last").append(formattedEductaionSection);
+    }
+
+    for (course in education.OnlineCourses) {
+      $("#education").append(HTMLonlineClasses);
+
+      var formattedonlineTitle = HTMLonlineTitle.replace("%data%", education.OnlineCourses[course].title);
+      var formattedonlineDates = HTMLonlineDates.replace("%data%", education.OnlineCourses[course].date);
+      var formattedonlineURL = HTMLonlineURL.replace("%data%", education.OnlineCourses[course].url);
+
+      var formattedOnlineCourseSection = formattedonlineTitle + formattedonlineDates;
+      $(".onlinecourse-entry").append(formattedOnlineCourseSection);
+    }
+  }
+};
+
+/** Work Object
+*@description Describes the jobs that I've had
+*/
+var work = {
+  "jobs": [
+    {
+      "employer": "David and Jonathan Ltd",
+      "title": "Shipping Clerk",
+      "location": "Miami, FL",
+      "dates": "2014 - 2015",
+      "description": "I managed the shipping and packaging",
+    },
+    {
+      "employer": "Clickworker",
+      "title": "Clickworker",
+      "location": "Online",
+      "dates": "2013 - Present",
+      "description": "I worked to improve the Bing search engine and related tasks",
+    }
+  ],
+
+/** @constructor Function to display my jobs on the DOM
+*@description Adds information from the work object to index.html
+*/  
+  display: function () {
+    for (job in work.jobs) {
+      $("#workExperience").append(HTMLworkStart);
+
+      var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+      var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+      var formattedDuration = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+      var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+      var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+
+
+      var formattedWorkSection = formattedEmployer + formattedTitle + formattedDuration + formattedLocation + formattedDescription;
+
+      $(".work-entry:last").append(formattedWorkSection);
+    }
+  }
+};
+
+/** Projects Object
+*@description Describes the projects that I've done
+*/
+var projects = {
+  "projects": [
+    {
+      "title": "P1: Mockup to Article",
+      "dates": "2016",
+      "description": "I replicated a PDF article in Markdown. I love Markdown!",
+      "image": "\\images\\article-to-mockup.png" 
+    },
+    {
+      "title": "P2: Build a Portfolio Site",
+      "dates": "2016",
+      "description": "I built a portfolio website in HTML, CSS, and jQuery",
+      "image": "\\images\\build-a-portfolio.png",      
+    }
+  ],
+  
+  /** @constructor Function to display my projects on the DOM
+*@description Adds information from the projects object to index.html
+*/  
+  display: function () {
+    for (project in projects.projects) {
+      $("#projects").append(HTMLprojectStart);
+
+      var formattedprojectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+      var formattedprojectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+      var formattedprojectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+      var formattedprojectImage = HTMLprojectImage.replace("%data%", projects.projects[project].image);
+
+      var formattedProjectSection = formattedprojectTitle + formattedprojectDates + formattedprojectDescription + formattedprojectImage;
+
+      $(".project-entry:last").append(formattedProjectSection);
+    }
+  }
+};
+
+/** Calls the education function */
+education.display();
+
+/** Calls the work function */
+work.display();
+
+/** Calls the project function */
+projects.display();
+
+/** Calls the bio function */
+bio.display();
+
+/** Appends the map to the DOM */
+$("#mapDiv").append(googleMap);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Function%2520to%2520display%2520my%2520education%2520on%2520the%2520DOM.html">Function to display my education on the DOM</a></li><li><a href="Function%2520to%2520display%2520my%2520jobs%2520on%2520the%2520DOM.html">Function to display my jobs on the DOM</a></li><li><a href="Function%2520to%2520display%2520my%2520projects%2520on%2520the%2520DOM.html">Function to display my projects on the DOM</a></li><li><a href="Function%2520to%2520display%2520the%2520bio%2520on%2520the%2520DOM.html">Function to display the bio on the DOM</a></li></ul><h3>Global</h3><ul><li><a href="global.html#bio">bio</a></li><li><a href="global.html#education">education</a></li><li><a href="global.html#projects">projects</a></li><li><a href="global.html#work">work</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Mar 24 2016 13:22:31 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
