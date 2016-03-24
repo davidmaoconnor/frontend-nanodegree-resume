@@ -1,5 +1,3 @@
-
-
 /** Biographical object
 *@description Describes contact and other useful information about me
 */
@@ -159,13 +157,13 @@ var projects = {
       'title': 'P1: Mockup to Article',
       'dates': '2016',
       'description': 'I replicated a PDF article in Markdown. I love Markdown!',
-      'image': '\\images\\article-to-mockup.png' 
+      'image': 'https://raw.githubusercontent.com/davidmaoconnor/frontend-nanodegree-resume/gh-pages/images/article-to-mockup.png' 
     },
     {
       'title': 'P2: Build a Portfolio Site',
       'dates': '2016',
       'description': 'I built a portfolio website in HTML, CSS, and jQuery',
-      'image': '\\images\\build-a-portfolio.png',      
+      'image': 'https://raw.githubusercontent.com/davidmaoconnor/frontend-nanodegree-resume/gh-pages/images/build-a-portfolio.png',      
     }
   ],
   
