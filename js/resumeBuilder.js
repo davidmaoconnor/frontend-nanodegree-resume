@@ -157,13 +157,13 @@ var projects = {
       'title': 'P1: Mockup to Article',
       'dates': '2016',
       'description': 'I replicated a PDF article in Markdown. I love Markdown!',
-      'image': 'https://raw.githubusercontent.com/davidmaoconnor/frontend-nanodegree-resume/gh-pages/images/article-to-mockup.png' 
+      'images': ['https://raw.githubusercontent.com/davidmaoconnor/frontend-nanodegree-resume/gh-pages/images/article-to-mockup.png'] 
     },
     {
       'title': 'P2: Build a Portfolio Site',
       'dates': '2016',
       'description': 'I built a portfolio website in HTML, CSS, and jQuery',
-      'image': 'https://raw.githubusercontent.com/davidmaoconnor/frontend-nanodegree-resume/gh-pages/images/build-a-portfolio.png',      
+      'images': ['https://raw.githubusercontent.com/davidmaoconnor/frontend-nanodegree-resume/gh-pages/images/build-a-portfolio.png']      
     }
   ],
   
@@ -177,9 +177,9 @@ var projects = {
       var formattedProjectTitle = HTMLprojectTitle.replace('%data%', projects.projects[project].title);
       var formattedProjectDates = HTMLprojectDates.replace('%data%', projects.projects[project].dates);
       var formattedProjectDescription = HTMLprojectDescription.replace('%data%', projects.projects[project].description);
-      var formattedProjectImage = HTMLprojectImage.replace('%data%', projects.projects[project].image);
+      var formattedProjectImages = HTMLprojectImage.replace('%data%', projects.projects[project].images);
 
-      var formattedProjectSection = formattedProjectTitle + formattedProjectDates + formattedProjectDescription + formattedProjectImage;
+      var formattedProjectSection = formattedProjectTitle + formattedProjectDates + formattedProjectDescription + formattedProjectImages;
 
       $('.project-entry:last').append(formattedProjectSection);
     }
