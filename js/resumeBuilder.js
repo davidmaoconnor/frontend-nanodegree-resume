@@ -5,7 +5,7 @@ var bio = {
   'name': 'David O\'Connor',
   'role': 'Developer',
   'contacts': {
-    'mobile': '305-984-8118',
+    'mobile': '305-NOT-TELLING :)',
     'email': 'davidmaoconnor at gmail.com',
     'github': 'davidmaoconnor',
     'twitter': 'N/A',
