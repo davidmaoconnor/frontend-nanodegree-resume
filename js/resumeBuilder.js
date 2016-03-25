@@ -18,7 +18,7 @@ var bio = {
 /** @constructor Function to display the bio on the DOM
 *@description Adds information from the bio object to index.html
 */
-  display: function displayBio() {
+  display: function() {
     var formattedName = HTMLheaderName.replace('%data%', bio.name);
     var formattedRole = HTMLheaderRole.replace('%data%', bio.role);
     $('#header').prepend(formattedName + formattedRole);
@@ -46,7 +46,7 @@ var bio = {
     var skillSixth = HTMLskillsLast.replace('%data%', bio.skills[5]);
     $('#header').append(skillFirst + skillSecond + skillThird + skillFourth + skillFifth + skillSixth);
   }
-}
+};
 
 /** Education Object
 *@description Describes the schools I attended and the online courses
@@ -84,7 +84,7 @@ var education = {
 */
   display: function () {
     $('#education').append(HTMLschoolStart);
-    for (school in education.schools) {
+    for (var school in education.schools) {
       var formattedSchoolName = HTMLschoolName.replace('%data%', education.schools[school].name);
       var formattedSchoolLocation = HTMLschoolLocation.replace('%data%', education.schools[school].location);
 
@@ -93,7 +93,7 @@ var education = {
       $('.education-entry:last').append(formattedEductaionSection);
     }
 
-    for (course in education.OnlineCourses) {
+    for (var course in education.OnlineCourses) {
       $('#education').append(HTMLonlineClasses);
 
       var formattedOnlineTitle = HTMLonlineTitle.replace('%data%', education.OnlineCourses[course].title);
@@ -131,7 +131,7 @@ var work = {
 *@description Adds information from the work object to index.html
 */  
   display: function () {
-    for (job in work.jobs) {
+    for (var job in work.jobs) {
       $('#workExperience').append(HTMLworkStart);
 
       var formattedEmployer = HTMLworkEmployer.replace('%data%', work.jobs[job].employer);
@@ -171,7 +171,7 @@ var projects = {
 *@description Adds information from the projects object to index.html
 */  
   display: function () {
-    for (project in projects.projects) {
+    for (var project in projects.projects) {
       $('#projects').append(HTMLprojectStart);
 
       var formattedProjectTitle = HTMLprojectTitle.replace('%data%', projects.projects[project].title);
